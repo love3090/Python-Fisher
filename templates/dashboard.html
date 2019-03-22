@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% block content %}
+     <!-- top tiles -->
+    <div class="row tile_count">
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i>今日顾客数</span>
+          <div class="count red">2,500</div>
+          <span class="count_bottom">比昨日<i class="red">4% </i></span>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i>本周顾客数</span>
+          <div class="count">123.50</div>
+          <span class="count_bottom">比上周<i class="green"><i class="fa fa-sort-asc"></i>3% </i></span>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i>本月顾客总数</span>
+          <div class="count">4,567</div>
+          <span class="count_bottom">比上月<i class="red"><i class="fa fa-sort-desc"></i>12% </i></span>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i>今日会员数</span>
+          <div class="count green">2,500</div>
+          <span class="count_bottom">比昨日<i class="green"><i class="fa fa-sort-asc"></i>34% </i> </span>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i>本周会员总数</span>
+          <div class="count">2,315</div>
+          <span class="count_bottom">比上周<i class="green"><i class="fa fa-sort-asc"></i>34% </i></span>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i>本月会员总数</span>
+          <div class="count">7,325</div>
+          <span class="count_bottom">比本月<i class="green"><i class="fa fa-sort-asc"></i>34%</i></span>
+        </div>
+    </div>
+    <!-- /top tiles -->
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div class="ln_solid"></div>
+    <div>
+    <div id="todayRevenue" style="width: 33.33%;height:300px;float:left"></div>
+    <!--<div id="todayRevenue" class="col-md-8 col-lg-4 col-sm-12"></div>-->
+    <!--<div id="weekRevenue" class="col-md-8 col-lg-4 col-sm-12"></div>-->
+    <!--<div id="monthRevenue" class="col-md-8 col-lg-4 col-sm-12"></div>-->
+    <div id="weekRevenue" style="width: 33.33%;height:300px;float:right"></div>
+    <div id="monthRevenue" style="width: 33.33%;height:300px;float:right"></div>
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+        let todayRevenue = echarts.init(document.getElementById('todayRevenue'));
+        let weekRevenue = echarts.init(document.getElementById('weekRevenue'));
+        let monthRevenue = echarts.init(document.getElementById('monthRevenue'));
+        // 指定图表的配置项和数据
+        let option = {
+        //     title : {
+        //     text: '今日收入总额',
+        //     subtext: '',
+        //     x:'center'
+        // },
+            tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+            //     legend: {
+            //     orient : 'vertical',
+            //     x : 'left',
+            //     data:['现金','微信','支付宝','银联']
+            // },
+            // toolbox: {
+            //     show : true,
+            //     feature : {
+            //         mark : {show: true},
+            //         dataView : {show: true, readOnly: false},
+            //         magicType : {
+            //             show: true,
+            //             type: ['pie', 'funnel'],
+            //             option: {
+            //                 funnel: {
+            //                     x: '25%',
+            //                     width: '50%',
+            //                     funnelAlign: 'left',
+            //                     max: 1548
+            //                 }
+            //             }
+            //         },
+            //         restore : {show: true},
+            //         saveAsImage : {show: true}
+            //     }
+            // },
+            label: {
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                    fontSize: '30',
+                    fontWeight: 'bold'
+                    }
+                },
+                normal:{
+                    show:true,
+                    position:"line"
+                }
+            },
+            graphic:{
+            type:'text',
+            left:'center',
+            top:'center',
+            style:{
+                text:'今日收入\n 3500元',  //写入文字的内容
+                textAlign:'center',
+                fill:'red',
+                width:30,
+                height:30,
+                fontSize:'16',
+                fontWeight:"bold",
+                }
+            },
+            labelLine:{normal:{show:true}},
+            calculable : true,
+            series : [
+                {
+                    name:'支付方式',
+                    type:'pie',
+                    radius : ['40%', '60%'],
+                    // center: ['50%', '60%'],
+                    center:'50%',
+                    // hoverAnimation: true,
+                    data:[
+                        {value:500, name:'现金'},
+                        {value:400, name:'微信'},
+                        {value:234, name:'支付宝'},
+                        {value:135, name:'银联'}
+                    ]
+                }
+            ]
+};
+
+        // 使用刚指定的配置项和数据显示图表。
+        todayRevenue.setOption(option);
+        weekRevenue.setOption(option);
+        monthRevenue.setOption(option);
+</script>
+{% endblock %}

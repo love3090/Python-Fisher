@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>产品信息登记</h3>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <!--<div class="x_title">-->
+                        <h2>新增产品信息</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            </li>
+                        </ul>
+                    <!--</div>-->
+                    <div class="x_content">
+                        <form class="form-horizontal form-label-left" action="member_list.html" method="post" novalidate>
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="product_name">产品名称 <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="product_name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="product_name" placeholder="产品名称" required="required" type="text">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="product_price">销售价格<span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="tel" id="product_price" name="product_price" required="required" data-validate-length-range="5" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label for="product_content" class="control-label col-md-3">产品内容</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="product_content" type="text" name="product_content" data-validate-length="6,8" class="form-control col-md-7 col-xs-12" required="required">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="product_category">类别<span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="product_category" name="amount-number" required="required" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label for="product_description" class="control-label col-md-3 col-sm-3 col-xs-12">产品描述</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="product_description" type="text" name="product_description" class="form-control col-md-7 col-xs-12" required="required">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">图片<span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">网页地址 <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="url" id="website" name="website" required="required" placeholder="www.website.com" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <!--<div class="item form-group">-->
+                                <!--<label class="control-label col-md-3 col-sm-3 col-xs-12" for="occupation">职业 <span class="required">*</span>-->
+                                <!--</label>-->
+                                <!--<div class="col-md-6 col-sm-6 col-xs-12">-->
+                                    <!--<input id="occupation" type="text" name="occupation" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-8 col-md-offset-7">
+                                    <button id="send" type="submit" class="btn btn-success">保存</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
